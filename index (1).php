@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+<head>
+<link rel="icon" type="image/x-icon" href="./images/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Graphical-Based Authentication
+</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+body {
+ background : url('./images/90451.jpg');
+	background-size : cover ;
+}
+#title {
+	font-size : 3rem ;
+	color : white  ;
+	font-weight : bold ;
+	margin : 5% ;
+}
+.landingdsh{
+	background : rgbs(0,0,0,0.1) ;
+	position : absolute ;
+	top : 0 ;
+	left : 0 ;
+	width : 100% ;
+	height : 100% ;
+	box-shadow : inset 0rem 0rem 3rem #fff ;
+	justify-content : center ;
+	align-items : center ;
+	display : flex ;
+	
+	
+}
+.dashbox {
+	width : 50% ;
+	height : 50% ;
+	box-shadow : inset 0rem 0rem 3rem #000 ;
+	justify-content : center ;
+	align-items : center ;
+	display : flex ;
+}
+
+#loginboxcon,#signupboxcon {
+	text-align : center ;
+	font-weight : bold ;
+	font-size : 2.5rem ;
+	color : white ;
+	
+}
+#signupbox {
+	
+	background : url('./images/spreadloc.png') center , rgba(0,0,0,0.5);
+	background-size : center ;
+	width : 15rem ;
+	height : 15rem ;
+	box-shadow : inset 0rem 0rem 3rem #000 ;
+	margin : 2rem 3rem 3rem 3rem ;
+	border-radius : 10% ;
+	animation : width 2s height 2s ;
+	cursor : pointer ;
+	
+}
+#signupbox:hover {
+	width : 17rem ;
+	height : 17rem ;
+}
+#loginbox {
+	background : url('./images/hacklogin.png') center , rgba(0,0,0,0.5);
+	background-size : contain ;
+	width : 15rem ;
+	height : 15rem ;
+	box-shadow : inset 0rem 0rem 3rem #000 ;
+	margin : 2rem 3rem 3rem 3rem ;
+	border-radius : 10% ;
+	animation : width 2s height 2s ;
+	cursor : pointer ;
+}
+#loginbox:hover {
+	width : 17rem ;
+	height : 17rem ;
+}
+footer {
+	position : absolute ;
+	width : 100% ;
+	background-color : rgba(0,0,0,0.9) ;
+	text-align : center ;
+	left : 0 ;
+	bottom : 0 ;
+	padding : 2rem ;
+	color : white ;
+}
+header {
+	z-index : 9 ;
+	top : 0 ;
+	left : 0 ;
+	width : 100% ;
+	color : black ;
+	background : rgba(155,155,155,1) ;
+	padding : 0.2rem 0.2rem 0.2rem 1rem ; 
+	
+	position : fixed ;
+	display : flex ;
+	align-items : center ;
+}
+header h1 {
+	margin : 1rem 5% 1rem 2% ;
+}
+header img {
+	margin : 0 1% 0 5% ;
+}
+nav {
+	position : absolute ;
+	right : 10% ;
+	text-spaccing : 1rem ;
+}
+nav a:link {
+	text-decoration : none ;
+	margin : 0rem 0.5rem 0rem 0.5rem ;
+}
+nav img {
+	display : none ;
+}
+#login,#signup {
+	position : absolute ;
+	background : rgba(255,255,255,0.2) ;
+	border : 0.1rem solid black ;
+	margin-left : 25% ;
+	margin-top : 7% ;
+	width : 50% ;
+	height : auto ;
+	border-radius : 1rem ;
+	color : white ;
+	display : flex ;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#login {
+	padding : 5% ; 
+	margin-left : 20% ;
+}
+#loginsideimg {
+	flex : 50% ;
+	background : url(./images/log2.jpg);
+	background-size : cover ;
+	color : white ;
+	height : auto ;
+	border-radius : 20% 50% 10% 40% ; 
+}
+#sideimg { 
+	width : 50% ;
+	background : url('./images/auth1.jpg') ;
+	border-radius : 1rem 0 0 1rem;
+	background-size : cover ;
+}
+#loginspace {
+	flex : 50% ;
+	margin-left : 5% ;
+}
+#signupspace {
+		padding : 5% ;
+}
+h2 {
+	text-decoration : underline ;
+}
+label {
+	font-size : 1.2rem ;
+	font-weight : bold ;
+}
+input,select { 
+	margin : 1rem ;
+	padding : 0.2rem ;
+	color : white ;
+	background : black ;
+	font-size : 1rem ;
+}
+.passtable {
+	margin : 0 1rem 0 1rem;
+}
+.btn {
+	background-color : black ;
+	color : white ;
+	border : 1px solid white ;
+	border-radius : 15px ;
+	padding :  0.7rem 1rem 0.7rem 1rem ;
+	box-shadow : 0.5rem 0.5rem 0.5rem black  ;
+	transition : padding 2s ;
+	cursor : pointer ;
+}
+#password,#logpassword {
+	position : absolute ;
+	padding : 5% 2% 5% 2%;
+	background : rgba(255,255,255,1) ;
+	border : 0.1rem solid black ;
+	margin-left : 25% ;
+	margin-top : 10% ;
+	border-radius : 1rem ;
+
+
+}
+.close {
+	float : right ;
+	text-decoration : none ;
+	font-size : 1.8rem ;
+	color : black ;
+	cursor : pointer ;
+	padding : 0.7rem ;
+	border-radius : 100% ;
+	background : rgba(0,0,0,0.2)
+}
+
+td { 
+	width : 5rem ;
+	height : 5rem ;
+	background-color : white ;
+	background-size : cover ;
+	background-repeat :no-repeat ;
+	border : 0.5rem solid transparent ;
+	vertical-align : bottom ;
+	text-align : right ; 
+	text-border : 10px solid red ;
+	cursor : pointer ;
+}
+.passw {
+	display : flex ;
+}
+.small {
+	width : 3rem ;
+	height : 3rem ;
+}
+#mobilenav {
+	position : absolute ;
+	width : 70% ;
+	z-index : 14 ;
+	height : 100% ;
+	color : white ;
+	background : url('./images/circle.jpg');
+	background-size : cover ;
+	padding-top : 5rem ; 
+	left : 0 ;
+	top :0 ;
+	font-weight : bold ;
+}
+#mobilenav img {
+	margin : 0 0 3rem 0 ;
+}
+#mobilenav li {
+	margin : 0 0 1rem 0 ;
+	list-style : none ;
+}
+#mobilenav .btn {
+	padding :  0.7rem 1rem 0.7rem 1rem ;
+	margin : 4rem 0 0 0 ;	
+}
+#mobilenav hr {
+	margin : 3rem 0 1.5rem 0 ;
+}
+@media screen and (max-width: 1423px) {
+
+#login {
+	padding : 5% ; 
+	margin-left : 15% ;
+	margin-top : 7% ;
+	width : 60% ;
+}
+.dashbox {
+	width : 70% ;
+	height : 60% ;
+	
+}
+
+}
+@media screen and (max-width: 991px) {
+.dashbox {
+	width : 100% ;
+	height : 100% ;
+	box-shadow : inset 0rem 0rem 0rem #000 ;
+	
+}
+header h1 {
+	display : none ;
+	
+}
+nav { 
+	position : relative ;
+	right : 1rem ;
+	margin : 1.2rem 5% 1.2rem auto ;
+	width : 100% ;
+	text-align : right ;
+}
+nav a {
+	display : none ;
+}
+nav img,.btn {
+	display : inline ;
+	margin-left : 0.8rem ;
+}
+#signup {
+	margin-left : 15% ;
+	margin-top : 7% ;
+	width : 70% ;
+}
+#login {
+	margin-left : 10% ;
+	margin-top : 13% ;
+	width : 70% ;
+    padding : 3rem 2% 3rem 2% ;
+}
+}
+@media screen and (max-width: 479px) {
+#title {
+	top : 0 ;
+	left : 0 ;
+	font-size : 2rem ;
+	color : white  ;
+	font-weight : bold ;
+	padding :6% 5% 2rem 2rem;
+margin : 0rem ;
+	background : rgba(0,0,0,0.6) ;
+}
+.dashbox {
+	height : 60% ;
+	justify-content : center ;
+	align-items : center ;
+	display : block ;
+	font-size : 0 ;
+}
+#signupboxcon,#loginboxcon {
+	font-size : 0rem ;
+}
+#signup,#login {
+	padding : 2% ; 
+	margin-left : 0 ;
+	margin-top : 4rem ;
+	width : 96% ;
+} 
+#login {
+	margin-top : 7rem ;
+    padding : 3rem 2% 3rem 2% ;
+}
+#sideimg,#loginsideimg { 
+	display : none ;
+}
+td {
+	width : 3rem ;
+	height : 3rem ;
+}
+#password,#logpassword {
+
+	padding : 2% 2% 2% 2%;
+	margin-left : 4rem ;
+	margin-top : 30% ;
+	vertical-align : center ;
+	
+}
+}
+</style>
+<script>
+$(function(){
+$('.fix').click();
+});
+
+</script>
+</head>
+<body>
+<p class="fix" onclick=$('#logincontainer,#password,#logpassword,#mobilenav,#signupcontainer,header').hide(1);>
+</p>
+
+<section class="landing">
+<center>
+<p id="title">Graphical Password Authentication</p></center>
+<section class="landingdsh">
+<section class="dashbox">
+<div id="signupboxcon" >
+Sign Up
+<div id="signupbox" onclick=$('.landing').fadeOut(500);$('#logincontainer').fadeOut(500);$('header').fadeIn(500);$('#signupcontainer').fadeIn(500);$('body').css("background","url(./images/bg2.jpg)");></div></div>
+<div id="loginboxcon">
+Login
+<div id="loginbox" onclick=$('.landing').fadeOut(500);$('#signupcontainer').fadeOut(500);$('header').fadeIn(500);$('#logincontainer').fadeIn(500);$('body').css("background","url(./images/bg1.jpg)");></div></div>
+</section>
+</section>
+</section>
+
+
+
+<header>
+<a href="#">
+<img src="./images/lock2.jpg" width="80rem" class="logo"></a>
+<h1>Graphical Password Authentication</h1>
+<nav>
+<a href="#loginn" class="btn" onclick=$('#signupcontainer').fadeOut(500);$('#logincontainer').fadeIn(500);$('body').css("background","url(./images/bg1.jpg)");>Login</a>
+<a href="#signupp" style="font-weight:bold;font-size:1.2rem;color:black;" onclick=$('#logincontainer').fadeOut(500);$('#signupcontainer').fadeIn(500);$('body').css("background","url(./images/bg2.jpg)"); class="signupbtn">SignUp</a>
+<sub><img src="./images/menu.png" width="35rem" onclick=$('#mobilenav').toggle(500);></sub>
+</nav>
+</header>
+
+<section id="mobilenav">
+<center>
+<a href="#">
+<img src="./images/lockw.png" width="130rem"></a>
+<li>About Us</li></br>
+<li onclick=$('#logincontainer').fadeOut(500);$('#signupcontainer').fadeIn(500);$('body').css("background","url(./images/bg2.jpg)"); >SignUp</li></br>
+<li class="btn" onclick=$('#signupcontainer').fadeOut(500);$('#logincontainer').fadeIn(500);$('body').css("background","url(./images/bg1.jpg)");>Login</li></br>
+<hr></hr>
+<li><url><a href="https://sih.gov.in/" style="color:white">sih.gov.in</a></url></li>
+</center>
+</section>
+<main>
+
+<section id="signupcontainer">
+<section id="signup">
+<section id="sideimg">
+</section>
+<section id="signupspace">
+<h2>Sign Up</h2>
+<label>Name : </label>
+<input type="text" placeholder="Name" name="name" required></br></br>
+<label>Email : </label>
+<input type="email" placeholder="Email" name="emmail" required></br></br>
+<label>Username : </label>
+<input type="text" placeholder="Username" name="username" required></br></br>
+<label>Color : </label>
+<select name="color">
+<option value="green">Green</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+</select>
+</br></br>
+<section class="passw">
+<label style="vertical-align:top">Password : </label>
+<table onclick=$('#password').fadeIn(1000);document.getElementById("password").style.visibility="visible"; class="passtable">
+<tr>
+<td id="1" class="small"></td>
+<td id="2" class="small"></td>
+<td id="3" class="small"></td>
+</tr>
+<tr>
+<td id="4" class="small"></td>
+<td id="5" class="small"></td>
+<td id="6" class="small"></td>
+</tr>
+<tr>
+<td id="7" class="small"></td>
+<td id="8" class="small"></td>
+<td id="9" class="small"></td>
+</tr>
+</table>
+</section>
+<hr></hr></br>
+<center><input type="submit" value="Sign Up" class="btn"></center>
+</section>
+</section>
+<section id="password">
+<a class="close" onclick=$('#password').fadeOut(700);>X</a></br>
+<center><table id="table" >
+</table>
+<script>
+var img=0;
+var imagearr = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'];
+for (var i = imagearr.length - 1; i > 0; i--) {
+   
+       // Generate random number
+       var j = Math.floor(Math.random() * (i + 1));
+       var temp = imagearr[i];
+       imagearr[i] = imagearr[j];
+       imagearr[j] = temp;
+	}
+
+for (var k=1;k<5;k++) {
+	var row = document.createElement("tr");
+	for (var j=1;j<5;j++) {
+	{
+	row.innerHTML+="<td style='background-image:url(./images/"+imagearr[img]+".jpg);' onclick='select("+imagearr[img]+",this)'></td>";
+	img++;
+	}
+	}
+	document.getElementById("table").appendChild(row);
+		
+}
+</script>
+</br>
+
+<script>
+var flag=1;
+var selector = 1;
+var password = [];
+function select(image,ids) {
+	if (flag<10) {
+		password.push(image);
+		document.getElementById(selector).setAttribute('style',"background-image:url('./images/"+image+".jpg')");
+		selector++;
+	ids.innerHTML=flag;
+	ids.style.border="0.2rem solid rgba(255,215,0,0.5)";
+	flag++;
+	ids.style.pointerEvents="none";
+	}
+}
+</script>
+<hr></hr>
+<input type="submit" value="Submit" class="btn" onclick=$('#password').fadeOut(700);;>
+</center>
+</br>
+</br>
+</section>
+</section>
+
+
+<section id="logincontainer">
+<section id="login">
+<section id="loginsideimg">
+</section>
+<section id="loginspace">
+<h2>Login</h2>
+<form action="denied.html" method="post">
+<label>Username : </label>
+<input type="text" placeholder="Username" name="username" required></br></br>
+<section class="passw">
+<label style="vertical-align:top">Password : </label>
+<table onclick=$('#logpassword').fadeIn(1000);document.getElementById("logpassword").style.visibility="visible"; class="passtable">
+<tr>
+<td id="10" class="small"></td>
+<td id="11" class="small"></td>
+<td id="12" class="small"></td>
+</tr>
+<tr>
+<td id="13" class="small"></td>
+<td id="14" class="small"></td>
+<td id="15" class="small"></	td>
+</tr>
+<tr>
+<td id="16" class="small"></td>
+<td id="17" class="small"></td>
+<td id="18" class="small"></td>
+</tr>
+</table>
+</section>
+</br>
+</br><hr></hr></br>
+<center>
+<input type="submit" value="Login" class="btn"></center>
+</form>
+</section>
+</section>
+
+
+<section id="logpassword">
+<a class="close" onclick=$('#logpassword').fadeOut(700);>X</a></br>
+<center><table id="logtable" >
+</table>
+<script>
+var img=0;
+var imagearr = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16'];
+for (var i = imagearr.length - 1; i > 0; i--) {
+   
+       // Generate random number
+       var j = Math.floor(Math.random() * (i + 1));
+       var temp = imagearr[i];
+       imagearr[i] = imagearr[j];
+       imagearr[j] = temp;
+	}
+
+for (var k=1;k<5;k++) {
+	var row = document.createElement("tr");
+	for (var j=1;j<5;j++) {
+	{
+	row.innerHTML+="<td style='background-image:url(./images/"+imagearr[img]+".jpg);' onclick='logselect("+imagearr[img]+",this)'></td>";
+	img++;
+	}
+	}
+	document.getElementById("logtable").appendChild(row);		
+}
+</script>
+</br>
+<script>
+var logflag=1;
+var logselector = 10;
+var password = [];
+function logselect(image,ids) {
+	
+	if (logflag<19) {
+		password.push(image);
+		document.getElementById(logselector).setAttribute('style',"background-image:url('./images/"+image+".jpg')");
+		logselector++;
+	ids.innerHTML=logflag;
+	ids.style.border="0.2rem solid rgba(255,215,0,0.5)";
+	logflag++;
+	ids.style.pointerEvents="none";
+	}
+}
+</script>
+<hr></hr>
+<input type="submit" value="Submit" class="btn" onclick="$('#logpassword').fadeOut(700);">
+</center>
+</section>
+</section>
+</main>
+</body>
+</html>
